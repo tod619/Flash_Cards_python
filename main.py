@@ -9,20 +9,33 @@ BACKGROUND_COLOR = "#B1DDC6"
 data = pandas.read_csv('data/french_words.csv')
 to_learn = data.to_dict(orient="records")
 
+current_card = {}
+
 
 # show next card function
 
 
 def next_card():
+    global current_card
     current_card = random.choice(to_learn)
     canvas.itemconfig(card_title, text="French")
     canvas.itemconfig(card_word, text=current_card["French"])
+
+# Flip Card Function
+
+
+def flip_card():
+    canvas.itemconfig(card_title, text="English")
+    canvas.itemconfig(card_word, text=current_card["English"])
 
 
 # Create Window
 window = Tk()
 window.title("Flash Cards")
 window.config(padx=40, pady=40, bg=BACKGROUND_COLOR)
+
+# Flip Card after 3 seconds
+window.after(3000, func=flip_card)
 
 # Add card image to canvas
 canvas = Canvas(width=800, height=526)
