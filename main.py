@@ -18,15 +18,16 @@ current_card = {}
 def next_card():
     global current_card
     current_card = random.choice(to_learn)
-    canvas.itemconfig(card_title, text="French")
-    canvas.itemconfig(card_word, text=current_card["French"])
+    canvas.itemconfig(card_title, text="French", fill="black")
+    canvas.itemconfig(card_word, text=current_card["French"], fill="black")
+    canvas.itemconfig(card_background, image=card_front_img)
 
 # Flip Card Function
 
 
 def flip_card():
-    canvas.itemconfig(card_title, text="English")
-    canvas.itemconfig(card_word, text=current_card["English"])
+    canvas.itemconfig(card_title, text="English", fill="white")
+    canvas.itemconfig(card_word, text=current_card["English"], fill="white")
     canvas.itemconfig(card_background, image=card_back_img)
 
 
